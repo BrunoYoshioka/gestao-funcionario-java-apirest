@@ -5,6 +5,7 @@ import com.bruno.sgfuncionario.repositories.FuncionarioRepository;
 import com.bruno.sgfuncionario.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,6 +49,10 @@ public class FuncionarioService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 }
