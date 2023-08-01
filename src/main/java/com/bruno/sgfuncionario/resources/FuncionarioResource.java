@@ -34,4 +34,10 @@ public class FuncionarioResource {
         Funcionario obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Funcionario> update(@PathVariable Long id, @RequestBody Funcionario obj) {
+        obj = service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }
