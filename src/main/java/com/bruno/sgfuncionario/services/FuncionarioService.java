@@ -46,4 +46,8 @@ public class FuncionarioService {
         entity.setSalario(obj.getSalario());
         entity.setTelefone(obj.getTelefone());
     }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }
