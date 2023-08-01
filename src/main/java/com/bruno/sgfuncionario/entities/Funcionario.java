@@ -1,4 +1,4 @@
-package com.bruno.sgfuncionario.entity;
+package com.bruno.sgfuncionario.entities;
 
 import java.io.Serializable;
 
