@@ -2,6 +2,7 @@ package com.bruno.sgfuncionario.services;
 
 import com.bruno.sgfuncionario.entities.Funcionario;
 import com.bruno.sgfuncionario.repositories.FuncionarioRepository;
+import com.bruno.sgfuncionario.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,6 @@ public class FuncionarioService {
 
     public Funcionario findById(Long id) {
         Optional<Funcionario> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 }
